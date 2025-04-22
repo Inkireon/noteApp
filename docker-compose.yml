@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:17
+    container_name: my_postgres
+    restart: always
+    ports:
+      - "5433:5432"   # 👈 внешний:внутренний (внешний порт 5433)
+    environment:
+      POSTGRES_USER: postgres         # 👈 имя пользователя
+      POSTGRES_PASSWORD: 123456     # 👈 пароль
+      POSTGRES_DB: noteapp             # 👈 имя БД
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
